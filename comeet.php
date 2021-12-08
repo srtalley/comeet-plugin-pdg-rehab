@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: Comeet
+ * Plugin Name: Comeet - PDG Rehab Version
  * Plugin URI: https://developers.comeet.com/v1.0/reference#wordpress-plugin-1
  * Description: Job listing page using the Comeet API.
- * Version: 2.3
+ * Version: 2.3r
  * Author: Comeet
  * Author URI: http://www.comeet.co
  * License: Apache 2
@@ -135,6 +135,12 @@ if (!class_exists('Comeet')) {
                     $positions_details .= "<b>" . $detail['name'] . "</b><br />" . addslashes($detail['value']) . "<br />";
                 }
             }
+
+
+            $description = $this->get_social_graph_description();
+            $description = addcslashes($description, '"');
+            $description = addcslashes($description, '\\');
+
             ?>
             <script type="application/ld+json">{
                     "@context": "http://schema.org",
@@ -174,7 +180,7 @@ if (!class_exists('Comeet')) {
                     },
                     <?php }?>
                     "image": "<?= $this->post_data['picture_url']?>",
-                    "description": "<?= addslashes($this->get_social_graph_description());?>",
+                    "description": "<?= $description;?>",
                     "directApply" : "True"
                     }
                 </script>

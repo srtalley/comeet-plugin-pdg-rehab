@@ -333,3 +333,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
         this is done with the addition of timestamp to the CSS url when cache set to false
     -comeet.js
         applying changes described above to the js file
+
+## [2.3r] - 2021-12-06
+###Fix
+    -comeet.php
+         changed the addslashes part of the description schema to use addcslashes to escape only double quotes and backslashes. addslashes was adding a backslash to single quotes which caused an issue with the schema and caused it to be invalid.
